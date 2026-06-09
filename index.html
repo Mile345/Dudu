@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Bat-Destino</title>
+    <style>
+        :root {
+            --bat-black: #1a1a1a;
+            --bat-gold: #ffcc00;
+            --romance-red: #d90429;
+            --text-gray: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bat-black);
+            color: var(--text-gray);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, #000000, var(--bat-black));
+            width: 100%;
+            border-bottom: 2px solid var(--bat-gold);
+        }
+
+        .bat-heart {
+            font-size: 50pt;
+            color: var(--bat-gold);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--bat-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            font-size: 24pt;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin-top: 40px;
+        }
+
+        .section {
+            background: #252525;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--romance-red);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: var(--bat-gold);
+            margin-top: 0;
+        }
+
+        /* Estilo do Calendário Simplificado */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .calendar div {
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .special-day {
+            background-color: var(--romance-red) !important;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--romance-red);
+            position: relative;
+        }
+
+        .special-day::after {
+            content: '🦇';
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            font-size: 12pt;
+        }
+
+        .playlist-placeholder, .gallery-placeholder {
+            background: #333;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--bat-gold);
+            border-radius: 10px;
+            color: #888;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-style: italic;
+            color: var(--romance-red);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="bat-heart">🦇❤️</div>
+        <h1>Nosso Bat-Destino</h1>
+        <p>Porque você é a luz na minha Gotham.</p>
+    </header>
+
+    <div class="container">
+        
+        <section class="section">
+            <h2>Nossa Data Especial</h2>
+            <p>Setembro</p>
+            <div class="calendar">
+                <div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
+                <!-- Dias vazios para começar em um exemplo hipotético -->
+                <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+                <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+                <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+                <div>20</div><div>21</div><div>22</div><div class="special-day">23</div><div>24</div><div>25</div><div>26</div>
+                <div>27</div><div>28</div><div>29</div><div>30</div>
+            </div>
+            <p style="text-align:center; margin-top:15px; color: var(--bat-gold);">Marque no bat-sinal: O dia mais importante.</p>
+        </section>
+
+        <section class="section">
+            <h2>Nossa Trilha Sonora</h2>
+            <div class="playlist-placeholder">
+                [Espaço para o Embed do Spotify]
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Nossas Memórias</h2>
+            <div class="gallery-placeholder">
+                [Aqui você colocará suas fotos de casal]
+            </div>
+        </section>
+
+    </div>
+
+    <div class="footer">
+        "I'm whatever Gotham needs me to be... and I need you."
+    </div>
+
+</body>
+</html>
