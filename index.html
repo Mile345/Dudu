@@ -3,171 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Bat-Destino</title>
+    <title>Nosso Lugar 🦇</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root {
-            --bat-black: #1a1a1a;
-            --bat-gold: #ffcc00;
-            --romance-red: #d90429;
-            --text-gray: #e0e0e0;
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bat-black);
-            color: var(--text-gray);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-bottom: 50px;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to bottom, #000000, var(--bat-black));
-            width: 100%;
-            border-bottom: 2px solid var(--bat-gold);
-        }
-
-        .bat-heart {
-            font-size: 50pt;
-            color: var(--bat-gold);
-            margin-bottom: 10px;
-        }
-
-        h1 {
-            color: var(--bat-gold);
-            text-transform: uppercase;
-            letter-spacing: 4px;
             margin: 0;
-            font-size: 24pt;
+            padding: 20px 0;
+            font-family: 'Urbanist', sans-serif;
         }
 
-        .container {
-            max-width: 800px;
-            width: 90%;
-            margin-top: 40px;
+        .nav-tabs {
+            position: fixed;
+            top: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 1px solid #ffd700;
+            display: flex;
+            gap: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
         }
 
-        .section {
-            background: #252525;
-            padding: 30px;
+        .nav-tabs a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-tabs a:hover {
+            color: #ff4d4d;
+            text-shadow: 0 0 8px #ff4d4d;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1100px;
+            min-height: 600px;
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin: 40px 0;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid #333;
+        }
+
+        .bat-bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(139,0,0,0.15) 100%);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .slide-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 60px;
+            color: #ffd700;
+            margin: 0 0 20px 0;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 0px #8b0000;
+        }
+        
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .text-block p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .image-frame {
+            border: 2px solid #ffd700;
             border-radius: 15px;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--romance-red);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 0 20px rgba(255, 214, 0, 0.2);
         }
 
-        h2 {
-            color: var(--bat-gold);
-            margin-top: 0;
+        .image-frame img {
+            width: 100%; height: 100%; object-fit: cover;
         }
 
-        /* Estilo do Calendário Simplificado */
-        .calendar {
+        .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
-            text-align: center;
-            background: #111;
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
+            border: 1px solid #444;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .calendar div {
-            padding: 10px;
-            border-radius: 5px;
+        .cal-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .cal-header {
+            font-weight: bold;
+            color: #ffd700;
         }
 
         .special-day {
-            background-color: var(--romance-red) !important;
-            color: white;
+            background: #8b0000 !important;
+            color: #fff;
             font-weight: bold;
-            box-shadow: 0 0 15px var(--romance-red);
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff4d4d;
+            border: 2px solid #ffd700;
             position: relative;
         }
 
         .special-day::after {
             content: '🦇';
             position: absolute;
-            top: -10px;
-            right: -5px;
-            font-size: 12pt;
+            top: -12px;
+            right: -8px;
+            font-size: 18px;
         }
 
-        .playlist-placeholder, .gallery-placeholder {
-            background: #333;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed var(--bat-gold);
-            border-radius: 10px;
+        .mural-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed #ffd700;
+            border-radius: 15px;
+            padding: 60px;
+            text-align: center;
             color: #888;
         }
 
-        .footer {
-            margin-top: 50px;
-            font-style: italic;
-            color: var(--romance-red);
+        /* TELA DE BLOQUEIO */
+        #lock-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0a0a;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lock-screen h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 45px;
+            color: #ffd700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .lock-container {
+            text-align: center;
+            background: #121212;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #8b0000;
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.3);
+        }
+
+        #lock-screen input {
+            background: #000;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+            text-align: center;
+            outline: none;
+            width: 200px;
+        }
+
+        #lock-screen button {
+            background: #8b0000;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #lock-screen button:hover {
+            background: #ff4d4d;
+            box-shadow: 0 0 10px #ff4d4d;
         }
     </style>
 </head>
-    <script>
-  var senhaForte = "EM2309"; 
-  var tentativa = prompt("Identifique-se: Qual é a senha?");
-
-  if (tentativa !== senhaForte) {
-    alert("Acesso negado!Cuidado! Você acordou o Evil Larry.).");
-    window.location.href = "https://trollface.dk/";
-  }
-</script>
 <body>
 
-    <header>
-        <div class="bat-heart">🦇❤️</div>
-        <h1>Nosso Bat-Destino</h1>
-        <p>Porque você é a luz na minha Gotham.</p>
-    </header>
-
-    <div class="container">
-        
-        <section class="section">
-            <h2>Nossa Data Especial</h2>
-            <p>Setembro</p>
-            <div class="calendar">
-                <div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
-                <!-- Dias vazios para começar em um exemplo hipotético -->
-                <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
-                <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
-                <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
-                <div>20</div><div>21</div><div>22</div><div class="special-day">23</div><div>24</div><div>25</div><div>26</div>
-                <div>27</div><div>28</div><div>29</div><div>30</div>
-            </div>
-            <p style="text-align:center; margin-top:15px; color: var(--bat-gold);">Marque no bat-sinal: O dia mais importante.</p>
-        </section>
-
-        <section class="section">
-            <h2>Nossa Trilha Sonora</h2>
-            <div class="playlist-placeholder">
-                [Espaço para o Embed do Spotify]
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Nossas Memórias</h2>
-            <div class="gallery-placeholder">
-                [Aqui você colocará suas fotos de casal]
-            </div>
-        </section>
-
+    <div id="lock-screen">
+        <div class="lock-container">
+            <i class="fa-solid fa-mask" style="font-size: 60px; color: #8b0000; margin-bottom: 20px;"></i>
+            <h2>Você deveria estar aqui?</h2>
+            <p style="color: #888; margin-bottom: 20px;">Código de acesso, Baby</p>
+            <input type="password" id="passInput" placeholder="Digite a senha...">
+            <br>
+            <button onclick="checkPass()">Entrar</button>
+            <p style="color: #444; margin-top: 15px; font-size: 13px;">Dica: Porque você precisa de dica?</p>
+        </div>
     </div>
 
-    <div class="footer">
-        "I'm whatever Gotham needs me to be... and I need you."
+    <nav class="nav-tabs">
+        <a href="#slide1">Home</a>
+        <a href="#slide2">O Que Somos</a>
+        <a href="#slide3">Nossas Fotos</a>
+        <a href="#slide4">Mural</a>
+    </nav>
+
+    <div class="slide-container" id="slide1" style="margin-top: 100px;">
+        <div class="bat-bg-overlay"></div>
+        <div class="slide-content" style="justify-content: center; align-items: center; text-align: center; min-height: 500px;">
+            <i class="fa-solid fa-batman" style="font-size: 80px; color: #ffd700; margin-bottom: 20px;"></i>
+            <h1 class="slide-title">MGIA</h1>
+            <p style="font-size: 20px; color: #ffd700; letter-spacing: 2px;">"My girlfriend is amazing."</p>
+        </div>
     </div>
 
+    <div class="slide-container" id="slide2">
+        <div class="bat-bg-overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-title">O Que Somos</h2>
+            <div class="split-layout">
+                <div class="text-block">
+                    <p>Esse é um site criado em sua homenagem e que eu espero ser não apenas fofo mas também útil. pensando nisso esse site conta com um CALENDÁRIO com o nosso aniversário de namoro, fotos e principalmente, um bloco de notas para colocarmos o que pensamos sem pensar, é tambem uma tentativa de me abrir mais com você, espero conseguir =)</p>
+                    <p>Te amo meu benzinho muito muito muito</p>
+                </div>
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=500" alt="Foto de Casal">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide3">
+        <div class="bat-bg-overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-title">Nossas Fotos & Calendário</h2>
+            <div class="split-layout" style="grid-template-columns: 0.8fr 1.2fr;">
+                <div class="image-frame" style="height: 300px;">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500" alt="Nossa Foto">
+                </div>
+                <div>
+                    <h3 style="color: #ffd700; text-align: center; margin-top: 0;">Setembro</h3>
+                    <div class="calendar-grid">
+                        <div class="cal-day cal-header">D</div><div class="cal-day cal-header">S</div><div class="cal-day cal-header">T</div><div class="cal-day cal-header">Q</div><div class="cal-day cal-header">Q</div><div class="cal-day cal-header">S</div><div class="cal-day cal-header">S</div>
+                        <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
+                        <div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
+                        <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+                        <div class="cal-day">22</div><div class="cal-day special-day" onclick="showSurprise()">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+                        <div class="cal-day">29</div><div class="cal-day">30</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide4">
+        <div class="bat-bg-overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-title">Nosso Mural</h2>
+            <div class="mural-placeholder">
+                <i class="fa-solid fa-thumbtack" style="font-size: 40px; color: #ffd700; margin-bottom: 15px;"></i>
+                <p style="font-size: 18px; color: #fff;"https://padlet.com/mimia741852/mural-mgia-srb08c93ywj5rwdr</p>
+                <p style="font-size: 14px;">As mensagens enviadas no Padlet vão aparecer direto nesta caixinha.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            // Altere a senha mudando o valor abaixo ('23')
+            if(pass === 'EM2309') {
+                document.getElementById('lock-screen').style.fadeOut = "slow"; // efeito simples
+                document.getElementById('lock-screen').style.display = 'none';
+            } else {
+                alert("Código incorreto! Cuidado! Você acaba de acordar o Evil Larry.");
+            }
+        }
+
+        function showSurprise() {
+            alert("Gotham precisa de você...E eu também!");
+        }
+    </script>
 </body>
 </html>
