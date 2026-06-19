@@ -288,12 +288,11 @@
         }
 
         .mural-container {
-            flex-grow: 1;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid var(--bat-gold);
-            height: 450px;
-        }
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid var(--bat-gold);
+        height: 650px; /* fixo, em vez de height:auto + flex-grow */
+    }
 
         /* TELA DE BLOQUEIO */
         #lock-screen {
