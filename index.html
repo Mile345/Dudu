@@ -3,298 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Lugar 🦇</title>
+    <title>MGIA 🦇❤️</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&family=Bebas+Neue&family=Courier+Prime&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        :root {
+            --bat-gold: #ffcc00;
+            --bat-red: #8b0000;
+            --bat-black: #0a0a0a;
+            --bat-gray: #1a1a1a;
+        }
+
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0a0a0a;
+            background-color: var(--bat-black);
             color: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             margin: 0;
-            padding: 20px 0;
+            padding: 0;
             font-family: 'Urbanist', sans-serif;
+            overflow-x: hidden;
         }
 
-        .nav-tabs {
+        /* NAVEGAÇÃO */
+        .bat-nav {
             position: fixed;
             top: 20px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 10px 30px;
-            border-radius: 50px;
-            border: 1px solid #ffd700;
+            width: 100%;
             display: flex;
-            gap: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            justify-content: center;
+            z-index: 1000;
         }
 
-        .nav-tabs a {
-            color: #ffd700;
+        .nav-container {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--bat-gold);
+            display: flex;
+            gap: 15px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-container a {
+            color: var(--bat-gold);
             text-decoration: none;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
         }
 
-        .nav-tabs a:hover {
+        .nav-container a:hover {
             color: #ff4d4d;
-            text-shadow: 0 0 8px #ff4d4d;
+            text-shadow: 0 0 10px #ff4d4d;
         }
 
+        /* CONTAINER DOS SLIDES */
         .slide-container {
             width: 100%;
-            max-width: 1100px;
-            min-height: 600px;
+            max-width: 1200px;
+            min-height: 680px;
+            margin: 60px auto;
             background-color: #000;
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 15px;
             position: relative;
-            margin: 40px 0;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border: 1px solid #333;
         }
 
-        .bat-bg-overlay {
+        .bat-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(139,0,0,0.15) 100%);
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(139,0,0,0.2) 100%);
             z-index: 1;
         }
 
-        .slide-content {
+        .content-area {
             position: relative;
             z-index: 2;
-            padding: 60px 40px;
+            padding: 50px 60px;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            justify-content: center;
         }
 
         .slide-title {
             font-family: 'Bebas Neue', cursive;
-            font-size: 60px;
-            color: #ffd700;
+            font-size: 70px;
+            color: var(--bat-gold);
             margin: 0 0 20px 0;
             letter-spacing: 3px;
-            text-shadow: 2px 2px 0px #8b0000;
+            text-shadow: 2px 2px 0px var(--bat-red);
         }
-        
-        .split-layout {
+
+        .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
             align-items: center;
         }
 
-        .text-block p {
+        /* CARD DE TEXTO - ESTILO MISSÃO CONFIDENCIAL */
+        .bat-mission-card {
+            background: #111;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #444;
+            border-top: 4px solid var(--bat-gold);
+            font-family: 'Courier Prime', monospace;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .bat-mission-card h3 {
+            color: var(--bat-red);
+            margin-top: 0;
             font-size: 18px;
-            line-height: 1.6;
-            color: #e0e0e0;
+            text-transform: uppercase;
+        }
+
+        .bat-mission-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #00ff66; /* Verde computador antigo */
         }
 
         .image-frame {
-            border: 2px solid #ffd700;
-            border-radius: 15px;
+            border: 3px solid var(--bat-gold);
+            border-radius: 20px;
             overflow: hidden;
-            height: 350px;
-            box-shadow: 0 0 20px rgba(255, 214, 0, 0.2);
+            height: 420px;
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.3);
         }
 
         .image-frame img {
             width: 100%; height: 100%; object-fit: cover;
         }
 
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #444;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cal-day {
-            aspect-ratio: 1;
+        /* CONTADOR */
+        .counter-box {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            border-radius: 8px;
-            background: rgba(0,0,0,0.5);
+            gap: 15px;
+            margin-top: 25px;
         }
 
-        .cal-header {
-            font-weight: bold;
-            color: #ffd700;
+        .counter-unit {
+            background: rgba(139, 0, 0, 0.3);
+            border: 1px solid var(--bat-red);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 80px;
         }
 
-        .special-day {
-            background: #8b0000 !important;
-            color: #fff;
+        .counter-num {
+            font-size: 32px;
             font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 15px #ff4d4d;
-            border: 2px solid #ffd700;
+            color: var(--bat-gold);
+            display: block;
+        }
+
+        /* LINHA DO TEMPO */
+        .timeline {
             position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px 0;
         }
 
-        .special-day::after {
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--bat-gold);
+            top: 0; bottom: 0; left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: transparent;
+            width: 50%;
+        }
+
+        .timeline-item::after {
             content: '🦇';
             position: absolute;
-            top: -12px;
-            right: -8px;
+            width: 25px; height: 25px;
+            right: -17px; top: 15px;
+            border-radius: 50%;
+            z-index: 1;
             font-size: 18px;
         }
 
-        .mural-placeholder {
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px dashed #ffd700;
-            border-radius: 15px;
-            padding: 60px;
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -12px; }
+
+        .timeline-content {
+            padding: 20px;
+            background: var(--bat-gray);
+            position: relative;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        /* BAT-SINAL INTERATIVO */
+        .batsignal-btn {
+            background: radial-gradient(circle, #ffcc00 0%, #000 70%);
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--bat-gold);
+            margin: 20px auto;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px var(--bat-gold);
+            transition: 0.3s;
+        }
+
+        .batsignal-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px var(--bat-gold);
+        }
+
+        .secret-message {
+            display: none;
+            background: rgba(255, 204, 0, 0.1);
+            border: 1px dashed var(--bat-gold);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
             text-align: center;
+            font-style: italic;
+        }
+
+
+        /* CALENDÁRIO */
+        .calendar-section {
+            background: var(--bat-gray);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid #444;
+        }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .cal-day {
+            padding: 10px 0;
+            background: #000;
+            border-radius: 8px;
+            font-size: 15px;
             color: #888;
+        }
+
+        .cal-head { color: var(--bat-gold); font-weight: bold; }
+
+        .special-day {
+            background: var(--bat-red) !important;
+            color: #fff !important;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--bat-gold);
+        }
+
+        .mural-container {
+            flex-grow: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--bat-gold);
+            height: 450px;
         }
 
         /* TELA DE BLOQUEIO */
         #lock-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #0a0a0a;
+            background: var(--bat-black);
             z-index: 9999;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        #lock-screen h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 45px;
-            color: #ffd700;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .lock-container {
+        .lock-box {
             text-align: center;
-            background: #121212;
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #8b0000;
-            box-shadow: 0 0 30px rgba(139, 0, 0, 0.3);
+            padding: 50px;
+            border-radius: 25px;
+            border: 2px solid var(--bat-red);
+            background: #111;
+            box-shadow: 0 0 50px rgba(139, 0, 0, 0.4);
         }
 
-        #lock-screen input {
+        #passInput {
             background: #000;
-            border: 2px solid #ffd700;
-            color: #ffd700;
+            border: 2px solid var(--bat-gold);
+            color: var(--bat-gold);
             padding: 12px;
             font-size: 18px;
             border-radius: 8px;
             text-align: center;
             outline: none;
-            width: 200px;
+            width: 220px;
+            margin-bottom: 20px;
         }
 
-        #lock-screen button {
-            background: #8b0000;
+        .bat-btn {
+            background: var(--bat-red);
             color: white;
             border: none;
-            padding: 12px 25px;
-            margin-top: 15px;
-            font-size: 16px;
+            padding: 12px 35px;
             border-radius: 8px;
-            cursor: pointer;
             font-weight: bold;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        #lock-screen button:hover {
-            background: #ff4d4d;
-            box-shadow: 0 0 10px #ff4d4d;
-        }
+        .bat-btn:hover { background: #ff4d4d; }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
-        <div class="lock-container">
-            <i class="fa-solid fa-mask" style="font-size: 60px; color: #8b0000; margin-bottom: 20px;"></i>
-            <h2>Você deveria estar aqui?</h2>
-            <p style="color: #888; margin-bottom: 20px;">Código de acesso, Baby</p>
-            <input type="password" id="passInput" placeholder="Digite a senha...">
+        <div class="lock-box">
+            <i class="fa-solid fa-mask" style="font-size: 60px; color: var(--bat-red); margin-bottom: 20px;"></i>
+            <h2 style="font-family: 'Bebas Neue'; font-size: 40px; color: var(--bat-gold); margin: 0 0 10px 0;">Acesso Restrito</h2>
+            <input type="password" id="passInput" placeholder="Senha da Bat-Caverna">
             <br>
-            <button onclick="checkPass()">Entrar</button>
-            <p style="color: #444; margin-top: 15px; font-size: 13px;">Dica: Porque você precisa de dica?</p>
+            <button class="bat-btn" onclick="unlock()">Desbloquear</button>
         </div>
     </div>
 
-    <nav class="nav-tabs">
-        <a href="#slide1">Home</a>
-        <a href="#slide2">O Que Somos</a>
-        <a href="#slide3">Nossas Fotos</a>
-        <a href="#slide4">Mural</a>
+    <nav class="bat-nav">
+        <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="#somos">O Que Somos</a>
+            <a href="#timeline">Nossa História</a>
+            <a href="#fotos">Fotos & Datas</a>
+            <a href="#mural">Mural</a>
+        </div>
     </nav>
 
-    <div class="slide-container" id="slide1" style="margin-top: 100px;">
-        <div class="bat-bg-overlay"></div>
-        <div class="slide-content" style="justify-content: center; align-items: center; text-align: center; min-height: 500px;">
-            <i class="fa-solid fa-batman" style="font-size: 80px; color: #ffd700; margin-bottom: 20px;"></i>
+    <div class="slide-container" id="home" style="margin-top: 100px;">
+        <img src="https://drive.google.com/uc?export=view&id=d/1yM240GdmgK0a7Ki76IL0FXqhX6ZCVR1F" alt="Foto 1" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
+        <div class="bat-overlay"></div>
+        <div class="content-area" style="align-items: center; text-align: center;">
             <h1 class="slide-title">MGIA</h1>
-            <p style="font-size: 20px; color: #ffd700; letter-spacing: 2px;">"My girlfriend is amazing."</p>
+            <p style="font-size: 22px; color: var(--bat-gold);">Tempo total de parceria contra o crime:</p>
+            
+            <div class="counter-box">
+                <div class="counter-unit"><span class="counter-num" id="days">00</span>Dias</div>
+                <div class="counter-unit"><span class="counter-num" id="hours">00</span>Horas</div>
+                <div class="counter-unit"><span class="counter-num" id="minutes">00</span>Minutos</div>
+            </div>
         </div>
     </div>
 
-    <div class="slide-container" id="slide2">
-        <div class="bat-bg-overlay"></div>
-        <div class="slide-content">
+    <div class="slide-container" id="somos">
+        <div class="bat-overlay" style="background: linear-gradient(to right, #000 55%, transparent 100%);"></div>
+        <div class="content-area">
             <h2 class="slide-title">O Que Somos</h2>
-            <div class="split-layout">
-                <div class="text-block">
-                    <p>Esse é um site criado em sua homenagem e que eu espero ser não apenas fofo mas também útil. pensando nisso esse site conta com um CALENDÁRIO com o nosso aniversário de namoro, fotos e principalmente, um bloco de notas para colocarmos o que pensamos sem pensar, é tambem uma tentativa de me abrir mais com você, espero conseguir =)</p>
-                    <p>Te amo meu benzinho muito muito muito</p>
+            <div class="two-column">
+                <div class="bat-mission-card">
+                    <h3>[ARQUIVO CONFIDENCIAL: WAYNE ENT.]</h3>
+                    <p><strong>STATUS:</strong> Parceria Indestrutível.</p>
+                    <p><strong>DESCRIÇÃO:</strong> Uma parceria de duas pessoas tão diferentes que chega a ser improvável, porém acaba sendo perfeito.</p>
+                    <p>Seja bem-vindo ao MGIA (My girlfriend is amazing). Esse é um site criado em sua homenagem e que eu espero ser não apenas fofo mas também útil. pensando nisso esse site conta com um calendário com o nosso aniversário de namoro, fotos e principalmente, um bloco de notas para colocarmos o que pensamos sem pensar, é também uma tentativa de me abrir mais com você, espero conseguir =)</p>
                 </div>
                 <div class="image-frame">
-                    <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=500" alt="Foto de Casal">
+                    <img src="https://drive.google.com/uc?export=view&id=d/13t2hNzaVLf84QswS3NbbdyH0-yc-CLmG" alt="Foto 2">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="slide-container" id="slide3">
-        <div class="bat-bg-overlay"></div>
-        <div class="slide-content">
-            <h2 class="slide-title">Nossas Fotos & Calendário</h2>
-            <div class="split-layout" style="grid-template-columns: 0.8fr 1.2fr;">
-                <div class="image-frame" style="height: 300px;">
-                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500" alt="Nossa Foto">
+    <div class="slide-container" id="timeline">
+        <div class="content-area" style="justify-content: flex-start; overflow-y: auto;">
+            <h2 class="slide-title" style="text-align: center;">Marcos da Missão</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h4 style="color: var(--bat-gold); margin: 0;">A primeira conversa.</h4>
+                        <p style="margin: 5px 0 0 0; font-size: 14px;">A melhor aula de inglês da minha vida.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 style="color: #ffd700; text-align: center; margin-top: 0;">Setembro</h3>
-                    <div class="calendar-grid">
-                        <div class="cal-day cal-header">D</div><div class="cal-day cal-header">S</div><div class="cal-day cal-header">T</div><div class="cal-day cal-header">Q</div><div class="cal-day cal-header">Q</div><div class="cal-day cal-header">S</div><div class="cal-day cal-header">S</div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h4 style="color: var(--bat-gold); margin: 0;">O Primeiro Encontro.</h4>
+                        <p style="margin: 5px 0 0 0; font-size: 14px;">Um quase bolo.</p>
+                     </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h4 style="color: var(--bat-gold); margin: 0;">O Pedido</h4>
+                        <p style="margin: 5px 0 0 0; font-size: 14px;">Quando você se tornou meu bem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="batsignal-btn" onclick="toggleSignal()">
+                <i class="fa-solid fa-batman" style="font-size: 40px; color: #000;"></i>
+            </div>
+            <div class="secret-message" id="signalMsg">
+                "Gotham precisa de você...E eu também."
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="fotos">
+        <div class="content-area">
+            <h2 class="slide-title">Memórias & Datas</h2>
+            <div class="two-column">
+                <div class="image-frame" style="height: 380px;">
+                    <img src="https://drive.google.com/uc?export=view&id=d/1ftteujQxceIESGBZ8INAd6352lQIDwFU" alt="Foto 3">
+                </div>
+                <div class="calendar-section">
+                    <h3 style="color: var(--bat-gold); text-align: center; font-family: 'Bebas Neue'; margin-top: 0;">Setembro</h3>
+                    <div class="cal-grid">
+                        <div class="cal-day cal-head">D</div><div class="cal-day cal-head">S</div><div class="cal-day cal-head">T</div><div class="cal-day cal-head">Q</div><div class="cal-day cal-head">Q</div><div class="cal-day cal-head">S</div><div class="cal-day cal-head">S</div>
                         <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
                         <div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
                         <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
-                        <div class="cal-day">22</div><div class="cal-day special-day" onclick="showSurprise()">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+                        <div class="cal-day">22</div><div class="cal-day special-day" onclick="alert('🦇 O dia em que tudo mudou! Feliz 23 de Setembro!')">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
                         <div class="cal-day">29</div><div class="cal-day">30</div>
                     </div>
                 </div>
@@ -302,32 +454,49 @@
         </div>
     </div>
 
-    <div class="slide-container" id="slide4">
-        <div class="bat-bg-overlay"></div>
-        <div class="slide-content">
-            <h2 class="slide-title">Nosso Mural</h2>
-            <div class="mural-placeholder">
-                <i class="fa-solid fa-thumbtack" style="font-size: 40px; color: #ffd700; margin-bottom: 15px;"></i>
-                <p style="font-size: 18px; color: #fff;"https://padlet.com/mimia741852/mural-mgia-srb08c93ywj5rwdr</p>
-                <p style="font-size: 14px;">As mensagens enviadas no Padlet vão aparecer direto nesta caixinha.</p>
+    <div class="slide-container" id="mural">
+        <div class="content-area">
+            <h2 class="slide-title">Bat-Arquivos: Nosso Mural</h2>
+            <div class="mural-container">
+                <iframe src="https://padlet.com/embed/mimia741852/mural-mgia-srb08c93ywj5rwdr" frameborder="0" style="width:100%;height:100%;display:block;"></iframe>
             </div>
         </div>
     </div>
 
     <script>
-        function checkPass() {
-            const pass = document.getElementById('passInput').value;
-            // Altere a senha mudando o valor abaixo ('23')
-            if(pass === 'EM2309') {
-                document.getElementById('lock-screen').style.fadeOut = "slow"; // efeito simples
+        function unlock() {
+            if(document.getElementById('passInput').value === 'EM2309') {
                 document.getElementById('lock-screen').style.display = 'none';
-            } else {
-                alert("Código incorreto! Cuidado! Você acaba de acordar o Evil Larry.");
-            }
+                startCounter();
+            } else { alert("Acesso negado! Cuidado! Vc acaba de despertar o evil Larry"); }
         }
 
-        function showSurprise() {
-            alert("Gotham precisa de você...E eu também!");
+        function startCounter() {
+            // AJUSTE AQUI A DATA DE VOCÊS (Ano, Mês [0-11], Dia, Hora)
+            // Exemplo: 23 de Setembro de 2024 -> (2024, 8, 23)
+            const startDate = new Date(2025, 8, 23, 0, 0, 0); 
+            
+            setInterval(() => {
+                const now = new Date();
+                const diff = now - startDate;
+                
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('days').innerText = d;
+                document.getElementById('hours').innerText = h;
+                document.getElementById('minutes').innerText = m;
+            }, 1000);
+        }
+
+        function toggleSignal() {
+            const msg = document.getElementById('signalMsg');
+            msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function answerQuiz(isCorrect) {
+            alert("🔒 Resposta registrada nos servidores da Bat-caverna!");
         }
     </script>
 </body>
